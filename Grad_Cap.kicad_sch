@@ -4,6 +4,13 @@
 
   (paper "A4")
 
+  (title_block
+    (title "Graduation Cap")
+    (date "2022-12-23")
+    (rev "1.0")
+    (company "Lala")
+  )
+
   (lib_symbols
     (symbol "LED:Inolux_IN-PI554FCH" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "D" (id 0) (at 5.08 5.715 0)

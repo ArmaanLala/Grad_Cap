@@ -4,7 +4,7 @@
     (thickness 1.6)
   )
 
-  (paper "A4")
+  (paper "A3")
   (layers
     (0 "F.Cu" signal)
     (31 "B.Cu" signal)
@@ -109,7 +109,7 @@
 
   (footprint "LED_SMD:LED_Inolux_IN-PI554FCH_PLCC4_5.0x5.0mm_P3.2mm" (layer "F.Cu")
     (tedit 5B561F4C) (tstamp 21f07d7b-e3d2-4e76-8c09-82f441f42994)
-    (at 103.5 65.5)
+    (at 92.5 45.5)
     (descr "http://www.inolux-corp.com/datasheet/SMDLED/Addressable%20LED/IN-PI554FCH.pdf")
     (tags "RGB LED NeoPixel addressable")
     (property "Sheetfile" "Grad_Cap.kicad_sch")
@@ -158,7 +158,7 @@
 
   (footprint "Package_DIP:DIP-28_W15.24mm_LongPads" (layer "F.Cu")
     (tedit 5A02E8C5) (tstamp eaead976-0eab-4eb0-b49d-37484b6d1698)
-    (at 82.3 64.3)
+    (at 233.4 216.5)
     (descr "28-lead though-hole mounted DIP package, row spacing 15.24 mm (600 mils), LongPads")
     (tags "THT DIP DIL PDIP 2.54mm 15.24mm 600mil LongPads")
     (property "Sheetfile" "Grad_Cap.kicad_sch")
@@ -254,5 +254,8 @@
       (rotate (xyz 0 0 0))
     )
   )
+
+  (gr_circle (center 140 140) (end 160 140) (layer "Edge.Cuts") (width 0.1) (fill none) (tstamp 210e6a6e-ddd2-472b-9780-30c9ce22a2b4))
+  (gr_rect (start 20 20) (end 260 260) (layer "Edge.Cuts") (width 0.1) (fill none) (tstamp 37c7db0d-3bc0-4baf-b927-d33c9e4d387d))
 
 )

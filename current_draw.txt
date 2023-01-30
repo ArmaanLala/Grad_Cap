@@ -1,0 +1,14 @@
+Light Testing
+100% = 1.8A
+100% (no white) = 1.43A
+80% (no white) = 1.132A
+50% = 1.15A
+50% (no white) = .700A
+10% = .276A
+
+100% (white only) = 1A
+
+
+Rainbow Lights:
+100% (no white) = .6A
+50% (no white) = .280A

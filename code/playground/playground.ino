@@ -1,14 +1,19 @@
 #include <Adafruit_NeoPixel.h>
+#include <EEPROM.h>
 
 #define LED_PIN 6
 #define N_LEDS 60
 #define button 3
 int buttonState = 0;  // variable for reading the pushbutton status
 int counter = 0;
+int design = 0;
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, LED_PIN, NEO_GRBW + NEO_KHZ800);
 
 void setup() {
+    design = EEPROM.read(0);
+    design = design % 3;
+    EEPROM.write(0,(design + 1) % 3);
     strip.begin();
     // strip.setBrightness(120);
     strip.show();
@@ -20,14 +25,9 @@ void setup() {
 }
 
 void loop() {
-    int x = random(3);
-    while (counter == x) {
-        x = random(3);
-    }
-    counter = x;
-    if (counter == 0) {
+    if (design == 0) {
         chase(strip.Color(255, 0, 0));  // Red
-    } else if (counter == 1) {
+    } else if (design == 1) {
         chase(strip.Color(0, 255, 0));  // Green
     } else {
         chase(strip.Color(0, 0, 255));  // Blue

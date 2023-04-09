@@ -41,12 +41,12 @@ static void chase(uint32_t c) {
         strip.show();
         delay(10);
     }
-    for (uint16_t i = N_LEDS - 4; i > 0; i--) {
-        strip.setPixelColor(i, c);      // Draw new pixel
-        strip.setPixelColor(i + 4, 0);  // Erase pixel a few steps back
-        strip.show();
-        delay(10);
-    }
+    // for (uint16_t i = N_LEDS - 4; i > 0; i--) {
+    //     strip.setPixelColor(i, c);      // Draw new pixel
+    //     strip.setPixelColor(i + 4, 0);  // Erase pixel a few steps back
+    //     strip.show();
+    //     delay(10);
+    // }
     strip.clear();
 }
 

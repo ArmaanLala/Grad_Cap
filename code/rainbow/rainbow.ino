@@ -34,14 +34,14 @@ struct Loop {
     }
 };
 
-Strip strip_0(60, 6, 60, NEO_GRBW + NEO_KHZ800);
+Strip strip_0(84, 9, 84, NEO_GRB + NEO_KHZ800);
 struct Loop strip0loop0(1, false, 1);
 
 //[GLOBAL_VARIABLES]
 
 void setup() {
     strip_0.strip.begin();
-    // strip_0.strip.setBrightness(100);
+    strip_0.strip.setBrightness(100);
 }
 
 void loop() { strips_loop(); }
@@ -80,7 +80,7 @@ uint8_t strip0_loop0_eff0() {
     if (millis() - strip_0.effStart < 2 * (strip_0.effStep)) return 0x00;
     float factor1, factor2;
     uint16_t ind;
-    for (uint16_t j = 0; j < 60; j++) {
+    for (uint16_t j = 0; j < 84; j++) {
         ind = strip_0.effStep + j * 2.5;
         switch ((int)((ind % 150) / 50)) {
             case 0:

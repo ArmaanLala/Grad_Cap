@@ -1,12 +1,14 @@
 #include <Adafruit_NeoPixel.h>
 #include <EEPROM.h>
+#include <FastLED.h>
+
 #include "logos.h"
 
 #define LED_PIN 9
 #define N_LEDS 84
-#define N_DESIGNS 5
+#define N_DESIGNS 6
 #define ADDRESS 0x0
-#define BRIGHTNESS 250
+#define BRIGHTNESS 100
 
 int design = 0;
 
@@ -16,7 +18,7 @@ void setup() {
     design = EEPROM.read(ADDRESS);
     design = design % N_DESIGNS;
     EEPROM.write(ADDRESS, (design + 1) % N_DESIGNS);
-    // design = 0;
+    // design = 3;
     strip.begin();
     strip.setBrightness(BRIGHTNESS);
     strip.show();
@@ -34,8 +36,27 @@ void loop() {
         gt_logo(strip.Color(255, 255, 0), strip.Color(0, 0, 255));
     } else if (design == 4) {
         chase_gt_logo(strip.Color(255, 255, 0), strip.Color(0, 0, 255));
+    } else if (design == 5) {
+        moving_alternating_colors(strip.Color(255, 255, 0), strip.Color(0, 0, 255), 1000);  // Yellow and Blue
+    } 
+}
+
+
+// Design 5: Moving alternating colors in G and T
+static void moving_alternating_colors(uint32_t c1, uint32_t c2, int duration) {
+    for (uint16_t shift = 0; shift < 2; shift++) {
+        strip.clear();
+        for (uint16_t i = 0; i < sizeof(g_shape) / sizeof(g_shape[0]); i++) {
+            strip.setPixelColor(g_shape[i], ((i + shift) % 2 == 0) ? c1 : c2);
+        }
+        for (uint16_t i = 0; i < sizeof(t_shape) / sizeof(t_shape[0]); i++) {
+            strip.setPixelColor(t_shape[i], ((i + shift) % 2 == 0) ? c2 : c1);
+        }
+        strip.show();
+        delay(duration);
     }
 }
+
 
 static void chase(uint32_t c) {
     for (uint16_t i = 6; i < N_LEDS + 6; i++) {

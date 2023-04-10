@@ -1,12 +1,11 @@
 #include <Adafruit_NeoPixel.h>
 #include <EEPROM.h>
-#include <FastLED.h>
 
 #include "logos.h"
 
 #define LED_PIN 9
 #define N_LEDS 84
-#define N_DESIGNS 6
+#define N_DESIGNS 5
 #define ADDRESS 0x0
 #define BRIGHTNESS 100
 
@@ -27,7 +26,7 @@ void setup() {
 
 void loop() {
     if (design == 0) {
-        chase(strip.Color(255, 255, 255));  // White
+        moving_alternating_colors(strip.Color(255, 255, 0), strip.Color(0, 0, 255), 1000);  // Yellow and Blue
     } else if (design == 1) {
         chase(strip.Color(255, 255, 0));  // Yellow
     } else if (design == 2) {
@@ -36,13 +35,9 @@ void loop() {
         gt_logo(strip.Color(255, 255, 0), strip.Color(0, 0, 255));
     } else if (design == 4) {
         chase_gt_logo(strip.Color(255, 255, 0), strip.Color(0, 0, 255));
-    } else if (design == 5) {
-        moving_alternating_colors(strip.Color(255, 255, 0), strip.Color(0, 0, 255), 1000);  // Yellow and Blue
-    } 
+    }
 }
 
-
-// Design 5: Moving alternating colors in G and T
 static void moving_alternating_colors(uint32_t c1, uint32_t c2, int duration) {
     for (uint16_t shift = 0; shift < 2; shift++) {
         strip.clear();
@@ -56,7 +51,6 @@ static void moving_alternating_colors(uint32_t c1, uint32_t c2, int duration) {
         delay(duration);
     }
 }
-
 
 static void chase(uint32_t c) {
     for (uint16_t i = 6; i < N_LEDS + 6; i++) {

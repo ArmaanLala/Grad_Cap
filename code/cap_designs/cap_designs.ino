@@ -7,7 +7,7 @@
 #define N_LEDS 84
 #define N_DESIGNS 5
 #define ADDRESS 0x0
-#define BRIGHTNESS 100
+#define BRIGHTNESS 255
 
 int design = 0;
 
@@ -28,7 +28,13 @@ void loop() {
     if (design == 0) {
         moving_alternating_colors(strip.Color(255, 255, 0), strip.Color(0, 0, 255), 1000);  // Yellow and Blue
     } else if (design == 1) {
-        chase(strip.Color(255, 255, 0));  // Yellow
+        // chase(strip.Color(255, 255, 0));  // Yellow
+      for( int index=0; index< 84; index++)
+      {
+        strip.setPixelColor(index, strip.Color(255, 255, 255)); // White
+      }
+      strip.show();
+
     } else if (design == 2) {
         chase(strip.Color(0, 0, 255));  // Blue
     } else if (design == 3) {
